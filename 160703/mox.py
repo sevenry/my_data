@@ -283,8 +283,8 @@ k=[0,3,4]
 x=X_init()
 print(x[:,0])
 
-'''
-for i in range(2):
+
+for i in range(20):###初次循环得到被选中频率较高的末端中心
     price,XXX,WWW=allinall(k=0)
     Z=Z_value(XXX)
     Z_record=Z_choice(Z)
@@ -298,7 +298,7 @@ kk=new_lines[1:]
 kk=list(kk)##转化成list才能在X_init()中完成选择
 
 best_price=99999999999
-for i in range(5):
+for i in range(5):###再次循环，在较高频率的末端中心中进行随机选择。
     price,XXX,WWW=allinall(kk)
     if price<best_price:
         #print(price,best_price)
@@ -314,43 +314,7 @@ up=up_cost(best_xline,best_wline)
 down=down_cost(best_xline,best_wline)
 extra=value_extra(best_xline)
 money=up+down+extra    
-print(money,'down')
-
-def iteration(k,money):
-    Wbest=W_init()
-    whole=money
-    time=0
-    while time<22:###测试总的迭代次数  
-        up_end,Xtry=random_up(Wbest,k)###旧的w引用该函数，得到的结果是随机的x和上层，后续是根据得到的x以及新的w生成的下层结果。
-        
-        down_end,Wtry=random_down(Xtry)
-        extra=value_extra(Xtry)
-        
-        real_up=up_cost(Xtry,Wtry)
-        money=real_up+down_end+extra
-        
-        error= whole-money
-        print(time,error)
-        if money<whole:
-            whole=money
-            Xbest=copy.deepcopy(Xtry)
-            Wbest=copy.deepcopy(Wtry)
-            if error < 10:
-                time+=1
-            else:time=0
-        else:
-            time+=1
-        
-iteration(kk,money)    
-
-
-def generation():
-    for 
-'''
-
-
-
-
+print(money,'down')##验证总价与对应的X和W序列一致。
 
 
 
