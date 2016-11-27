@@ -14,18 +14,28 @@ class Solution:
                 
             return a[n-1]
 
-#452 删除链表中的元素 null why 放入链表
+#452 删除链表中的元素
 class Solution:
     # @param head, a ListNode
     # @param val, an integer
     # @return a ListNode
     def removeElements(self, head, val):
         # Write your code here
-        new = []
-        for num in head:
-            if num == val:
-                head.remove(num)
-        return head
+        a = ()
+        if head == None:return None
+        while head!=None:
+            if head.val!=val:
+                a += (head.val,)
+            head = head.next
+        if len(a)==0:return None
+        s = ListNode(a[0])
+        if len(a)==1:return s
+        for i in range(len(a)-1):
+            if i ==0 :y=s
+            c = ListNode(a[1+i])
+            s.next = c
+            s=c
+        return y
 
 #463 整数排序
 class Solution:
@@ -40,4 +50,3 @@ class Solution:
                     A[j]=A[i]
                     A[i]=min1
         return A
-
