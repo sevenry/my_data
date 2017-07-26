@@ -1,5 +1,4 @@
 #归并排序
-#testaaa
 import numpy
 def divide(a):
 	n=len(a)
